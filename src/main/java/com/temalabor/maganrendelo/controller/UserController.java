@@ -1,7 +1,7 @@
 package com.temalabor.maganrendelo.controller;
 
-import com.temalabor.maganrendelo.model.User;
-import com.temalabor.maganrendelo.repository.UserRepository;
+import com.temalabor.maganrendelo.model.Patient;
+import com.temalabor.maganrendelo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +13,16 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    PatientRepository patientRepository;
 
     @GetMapping("/users")
-    public List<User> users() {
-        return userRepository.findAll();
+    public List<Patient> users() {
+        return patientRepository.findAll();
     }
 
     @GetMapping("/users/{id}")
-    public User findUser(@PathVariable String id) {
-        return userRepository.findById(Integer.parseInt(id));
+    public Patient findUser(@PathVariable String id) {
+        return patientRepository.findById(Long.parseLong(id));
     }
 
 }

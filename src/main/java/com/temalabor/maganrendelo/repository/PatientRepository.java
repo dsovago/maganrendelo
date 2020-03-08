@@ -1,12 +1,12 @@
 package com.temalabor.maganrendelo.repository;
 
-import com.temalabor.maganrendelo.model.User;
+import com.temalabor.maganrendelo.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    User findById(int id);
+    Patient findById(long id);
 
 }
