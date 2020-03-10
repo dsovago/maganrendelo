@@ -3,26 +3,25 @@ package com.temalabor.maganrendelo.controller;
 import com.temalabor.maganrendelo.model.Patient;
 import com.temalabor.maganrendelo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
     PatientRepository patientRepository;
 
-    @GetMapping("/users")
+    @GetMapping("/patients")
     public List<Patient> users() {
-        return patientRepository.findAll();
+        return (List<Patient>)patientRepository.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public Patient findUser(@PathVariable String id) {
-        return patientRepository.findById(Long.parseLong(id));
+    @PostMapping("/patients")
+    void addUser(@RequestBody Patient patient) {
+        patientRepository.save(patient);
     }
 
 }
