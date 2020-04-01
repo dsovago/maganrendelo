@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-    Doctor findById(int id);
+    Doctor findById(long id);
 
-    //List<Doctor> findByCategory();
+    List<Doctor> findByCategory(String category);
 }
