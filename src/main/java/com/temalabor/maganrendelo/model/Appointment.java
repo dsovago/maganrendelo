@@ -13,19 +13,19 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long user_id;
-    private long surgery_id;
+    private long doctor_id;
     private LocalDateTime date;
 
-    public Appointment(long user_id, long surgery_id, LocalDateTime date) {
+    public Appointment(long user_id, long doctor_id, LocalDateTime date) {
         this.user_id = user_id;
-        this.surgery_id = surgery_id;
+        this.doctor_id = doctor_id;
         this.date = date;
     }
 
     public Appointment(long id, long user_id, long surgery_id, LocalDateTime date) {
         this.id = id;
         this.user_id = user_id;
-        this.surgery_id = surgery_id;
+        this.doctor_id = surgery_id;
         this.date = date;
     }
 
@@ -48,12 +48,12 @@ public class Appointment {
         this.user_id = user_id;
     }
 
-    public long getSurgery_id() {
-        return surgery_id;
+    public long getDoctor_id() {
+        return doctor_id;
     }
 
-    public void setSurgery_id(long surgery_id) {
-        this.surgery_id = surgery_id;
+    public void setDoctor_id(long doctor_id) {
+        this.doctor_id = doctor_id;
     }
 
     public LocalDateTime getDate() {
