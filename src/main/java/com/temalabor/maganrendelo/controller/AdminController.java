@@ -1,6 +1,5 @@
 package com.temalabor.maganrendelo.controller;
 
-import com.temalabor.maganrendelo.model.Appointment;
 import com.temalabor.maganrendelo.model.Doctor;
 import com.temalabor.maganrendelo.model.Patient;
 import com.temalabor.maganrendelo.model.Surgery;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class UserController {
+public class AdminController {
 
     @Autowired
     PatientRepository patientRepository;
@@ -23,12 +22,13 @@ public class UserController {
     @Autowired
     SurgeryRepository surgeryRepository;
 
-    @GetMapping("admin/patients") // admin
+
+    @GetMapping("admin/patients")
     public List<Patient> patients() {
         return patientRepository.findAll();
     }
 
-    @PostMapping("admin/patients") // admin
+    @PostMapping("admin/patients")
     void addPatient(@RequestBody Patient patient) {
         patientRepository.save(patient);
     }
@@ -38,27 +38,4 @@ public class UserController {
 
     @GetMapping("/admin/surgeries")
     public List<Surgery> surgeries() { return surgeryRepository.findAll(); }
-
-    @GetMapping("/patient/{id}")
-    public Patient findPatient(@PathVariable String id) {
-        return patientRepository.findById(Long.parseLong(id));
-    }
-
-    @GetMapping("/doctor/{id}")
-    public Doctor findDoctor(@PathVariable String id){ return doctorRepository.findById(Long.parseLong(id)); }
-
-    @GetMapping("/doctor/{id}/patients")
-    public Doctor findPatientsOfDoctor(@PathVariable String id){
-        //TODO
-        return null;
-    }
-
-    @GetMapping("/surgery/{id}")
-    public Surgery findSurgery(@PathVariable String id) {
-        return surgeryRepository.findById(Long.parseLong(id));
-    }
-
-
-
-
 }

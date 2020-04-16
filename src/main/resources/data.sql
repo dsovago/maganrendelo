@@ -30,8 +30,12 @@ insert into surgery (name, address, email, tel, opening, info)
   values ('Vak Elemér Szemészeti Magánklinika','1345 Budapest, Rendelő u. 22.','vakszemeszet@magan.hu','06408937389',
           'H-P: 9-14','Éles látás, boldog élet... A Vak Elemérben valóra válik.');
 
-insert into appointment (user_id, doctor_id, date)
+insert into appointment (patient_id, doctor_id, date)
   values (1,3,'2020-04-26 13:15:00');
 
-insert into appointment (user_id, doctor_id, date)
+insert into appointment (patient_id, doctor_id, date)
   values (2,1,'2020-04-20 09:45:00');
+
+
+insert into users (email, pass, role)
+  values ('admin@magan.hu','abc123','ADMIN');
