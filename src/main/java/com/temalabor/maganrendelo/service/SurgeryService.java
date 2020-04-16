@@ -20,4 +20,6 @@ public class SurgeryService {
     public List<Surgery> getSurgeries(){ return surgeryRepository.findAll(); }
 
     public Surgery getSurgeryById(long id) { return surgeryRepository.findById(id); }
+
+    public void saveSurgery(Surgery surgery) { surgeryRepository.save(surgery); }
 }

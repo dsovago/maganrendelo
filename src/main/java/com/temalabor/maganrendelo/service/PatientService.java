@@ -43,18 +43,22 @@ public class PatientService {
 
     }
 
+    public void updatePatient(Patient patient) {
+        patientRepository.save(patient);
+    }
+
     public List<Patient> getPatients() { return patientRepository.findAll(); }
 
     public Patient getPatientById(long id) { return patientRepository.findById(id); }
 
     public Patient getPatientByTaj(String taj) { return patientRepository.findByTaj(taj); }
 
-//    public List<Patient> getPatietsByDoctor(long doctorId) {
-//        List<Appointment> appointments = appointmentService.getAppointmentsByDoctor(doctorId);
-//        ArrayList<Patient> patients = new ArrayList<>();
-//        for (Appointment a : appointments){
-//            patients.add(patientRepository.findById(a.getPatient_id()));
-//        }
-//        return patients;
-//    }
+    public List<Patient> getPatietsByDoctor(long doctorId) {
+        List<Appointment> appointments = appointmentService.getAppointmentsByDoctor(doctorId);
+        ArrayList<Patient> patients = new ArrayList<>();
+        for (Appointment a : appointments){
+            patients.add(patientRepository.findById(a.getPatientId()));
+        }
+        return patients;
+    }
 }

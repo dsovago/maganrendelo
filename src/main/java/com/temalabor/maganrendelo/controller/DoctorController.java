@@ -32,10 +32,10 @@ public class DoctorController {
     @GetMapping("/doctor/{id}")
     public Doctor doctorById(@PathVariable String id){ return doctorService.getDoctorById(Long.parseLong(id)); }
 
-//    @GetMapping("/doctor/{id}/patients")
-//    public List<Patient> findPatientsOfDoctor(@PathVariable String id){
-//        return patientService.getPatietsByDoctor(Long.parseLong(id));
-//    }
+    @GetMapping("/doctor/{id}/patients")
+    public List<Patient> findPatientsOfDoctor(@PathVariable String id){
+        return patientService.getPatietsByDoctor(Long.parseLong(id));
+    }
 
 
 }

@@ -1,15 +1,15 @@
 package com.temalabor.maganrendelo.controller;
 
+import com.temalabor.maganrendelo.model.Appointment;
 import com.temalabor.maganrendelo.model.Doctor;
+import com.temalabor.maganrendelo.model.Patient;
 import com.temalabor.maganrendelo.model.Surgery;
 import com.temalabor.maganrendelo.repository.SurgeryRepository;
+import com.temalabor.maganrendelo.service.AppointmentService;
 import com.temalabor.maganrendelo.service.DoctorService;
 import com.temalabor.maganrendelo.service.SurgeryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class SurgeryController {
 
     SurgeryService surgeryService;
     DoctorService doctorService;
+    AppointmentService appointmentService;
 
     @Autowired
     public void setSurgeryService(SurgeryService surgeryService) {
@@ -30,6 +31,11 @@ public class SurgeryController {
         this.doctorService = doctorService;
     }
 
+    @Autowired
+    public void setAppointmentService(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
     @GetMapping("/surgery/{id}")
     public Surgery findSurgery(@PathVariable String id) {
         return surgeryService.getSurgeryById(Long.parseLong(id));
@@ -39,4 +45,14 @@ public class SurgeryController {
     public List<Doctor> getDoctorsBySurgery(@PathVariable String id) {
         return  doctorService.getDoctorsBySurgery(Long.parseLong(id));
     }
+
+    @GetMapping("/surgery/{id}/appointment")
+    public List<Doctor> getDoctorsForAppoinment(@PathVariable String id) {
+        return  doctorService.getDoctorsBySurgery(Long.parseLong(id));
+    }
+
+    /*@PostMapping("/surgery/{id}/appointment")
+    public void newAppointment(@RequestBody Patient patient) {
+        Appointment a = new Appointment()
+        appointmentService.saveAppointment();}*/
 }

@@ -24,5 +24,5 @@ public class DoctorService {
 
     public List<Doctor> getDoctorsBySurgery(long surgeryId) { return doctorRepository.findBySurgeryId(surgeryId); }
 
-
+    public void saveDoctor(Doctor doctor){ doctorRepository.save(doctor); }
 }

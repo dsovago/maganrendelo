@@ -3,9 +3,9 @@ package com.temalabor.maganrendelo.controller;
 import com.temalabor.maganrendelo.model.Doctor;
 import com.temalabor.maganrendelo.model.Patient;
 import com.temalabor.maganrendelo.model.Surgery;
-import com.temalabor.maganrendelo.repository.DoctorRepository;
-import com.temalabor.maganrendelo.repository.PatientRepository;
-import com.temalabor.maganrendelo.repository.SurgeryRepository;
+import com.temalabor.maganrendelo.service.DoctorService;
+import com.temalabor.maganrendelo.service.PatientService;
+import com.temalabor.maganrendelo.service.SurgeryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,26 +16,27 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    PatientRepository patientRepository;
+    PatientService patientService;
     @Autowired
-    DoctorRepository doctorRepository;
+    DoctorService doctorService;
     @Autowired
-    SurgeryRepository surgeryRepository;
+    SurgeryService surgeryService;
 
 
     @GetMapping("admin/patients")
     public List<Patient> patients() {
-        return patientRepository.findAll();
-    }
-
-    @PostMapping("admin/patients")
-    void addPatient(@RequestBody Patient patient) {
-        patientRepository.save(patient);
+        return patientService.getPatients();
     }
 
     @GetMapping("/admin/doctors")
-    public List<Doctor> doctors(){ return doctorRepository.findAll(); }
+    public List<Doctor> doctors(){ return doctorService.getDoctors(); }
+
+    @PostMapping("/admin/doctors")
+    public void addDoctor(@RequestBody Doctor newDoctor){ doctorService.saveDoctor(newDoctor); }
 
     @GetMapping("/admin/surgeries")
-    public List<Surgery> surgeries() { return surgeryRepository.findAll(); }
+    public List<Surgery> surgeries() { return surgeryService.getSurgeries(); }
+
+    @PostMapping("/admin/surgeries")
+    public  void addSurgery(@RequestBody Surgery newSurgery){ surgeryService.saveSurgery(newSurgery); }
 }

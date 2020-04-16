@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:4200")
 public class PatientController {
 
-    @Autowired
     PatientService patientService;
+
+    @Autowired
+    public void setPatientService(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     //regisztracios adatok kuldese
     @PostMapping("/registration")
@@ -19,8 +23,20 @@ public class PatientController {
         patientService.newPatient(patientdto);
     }
 
+    //paciens lekerdezese id szerint
     @GetMapping("/patient/{id}")
     public Patient findPatient(@PathVariable String id) {
         return patientService.getPatientById(Long.parseLong(id));
+    }
+
+    //adatok szerkesztese
+    @GetMapping("/patient/{id}/edit")
+    public Patient getPatientsData(@PathVariable String id) {
+        return patientService.getPatientById(Long.parseLong(id));
+    }
+
+    @PostMapping("/patient/{id}/edit")
+    public void saveEditedPatient(@RequestBody Patient editedPatient) {
+        patientService.updatePatient(editedPatient);
     }
 }
