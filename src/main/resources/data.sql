@@ -18,17 +18,17 @@ insert into doctor (firstname, lastname, email, tel, category)
   values ('Kálmán','Könyves','konyvesk@magan.hu','06402189777','kardiológia');
 
 
-insert into surgery (name, address, email, tel, opening, info)
+insert into surgery (name, address, email, tel, opening, info, map)
   values ('Szent Barnabás Kardiológiai Klinika','1345 Budapest, Rendelő u. 13.','szentbarnabas@magan.hu','06405566778',
-          'H-P: 8-16','A főváros legjobb kardiológiai klinikája');
+          'H-P: 8-16','A főváros legjobb kardiológiai klinikája','https://tinyurl.com/yacynn3l');
 
-insert into surgery (name, address, email, tel, opening, info)
+insert into surgery (name, address, email, tel, opening, info, map)
   values ('Metsző András Sebészeti Magánrendelő','1345 Budapest, Rendelő u. 15.','metszo@magan.hu','06407323783',
-          'H,SZE: 8-17, K,CS: 8-15','Budapest szívében, azonnali ellátással');
+          'H,SZE: 8-17, K,CS: 8-15','Budapest szívében, azonnali ellátással','https://tinyurl.com/yacynn3l');
 
-insert into surgery (name, address, email, tel, opening, info)
+insert into surgery (name, address, email, tel, opening, info, map)
   values ('Vak Elemér Szemészeti Magánklinika','1345 Budapest, Rendelő u. 22.','vakszemeszet@magan.hu','06408937389',
-          'H-P: 9-14','Éles látás, boldog élet... A Vak Elemérben valóra válik.');
+          'H-P: 9-14','Éles látás, boldog élet... A Vak Elemérben valóra válik.','https://tinyurl.com/yacynn3l');
 
 insert into appointment (patient_id, doctor_id, date)
   values (1,3,'2020-04-26 13:15:00');

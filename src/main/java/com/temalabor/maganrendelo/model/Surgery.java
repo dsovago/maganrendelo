@@ -15,20 +15,22 @@ public class Surgery {
     private String email;
     private String tel;
     private String info;
+    private String map;
     @OneToMany(mappedBy = "surgery")
     private List<Doctor> doctors;
 
-    public Surgery(String name, String address, String opening, String email, String tel, String info, List<Doctor> doctors) {
+    public Surgery(String name, String address, String opening, String email, String tel, String info, String map, List<Doctor> doctors) {
         this.name = name;
         this.address = address;
         this.opening = opening;
         this.email = email;
         this.tel = tel;
         this.info = info;
+        this.map = map;
         this.doctors = doctors;
     }
 
-    public Surgery(long id, String name, String address, String opening, String email, String tel, String info, List<Doctor> doctors) {
+    public Surgery(long id, String name, String address, String opening, String email, String tel, String info, String map, List<Doctor> doctors) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -36,6 +38,7 @@ public class Surgery {
         this.email = email;
         this.tel = tel;
         this.info = info;
+        this.map = map;
         this.doctors = doctors;
     }
 
@@ -96,6 +99,14 @@ public class Surgery {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public String getMap() {
+        return map;
+    }
+
+    public void setMap(String map) {
+        this.map = map;
     }
 
     public List<Doctor> getDoctors() {
