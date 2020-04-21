@@ -46,7 +46,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/surgery/{id}/edit")
-    public void saveEditedSurgery(@PathVariable Surgery editedSurgery) {
+    public void saveEditedSurgery(@RequestBody Surgery editedSurgery) {
         surgeryService.saveSurgery(editedSurgery);
     }
 
