@@ -39,4 +39,19 @@ public class AdminController {
 
     @PostMapping("/admin/surgeries")
     public  void addSurgery(@RequestBody Surgery newSurgery){ surgeryService.saveSurgery(newSurgery); }
+
+    @GetMapping("/admin/surgery/{id}/edit")
+    public Surgery findSurgeryForEdit(@PathVariable String id) {
+        return surgeryService.getSurgeryById(Long.parseLong(id));
+    }
+
+    @PostMapping("/admin/surgery/{id}/edit")
+    public void saveEditedSurgery(@PathVariable Surgery editedSurgery) {
+        surgeryService.saveSurgery(editedSurgery);
+    }
+
+    @DeleteMapping("admin/surgery/{id}")
+    public void deleteSurgery(@PathVariable String id) {
+        surgeryService.deleteSurgeryById(Long.parseLong(id));
+    }
 }

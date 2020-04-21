@@ -22,4 +22,6 @@ public class SurgeryService {
     public Surgery getSurgeryById(long id) { return surgeryRepository.findById(id); }
 
     public void saveSurgery(Surgery surgery) { surgeryRepository.save(surgery); }
+
+    public void deleteSurgeryById(long id) { surgeryRepository.deleteById(id); }
 }
