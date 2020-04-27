@@ -42,14 +42,17 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                     .antMatchers("/").permitAll()
                     .antMatchers("/home").permitAll()
                     .antMatchers("/surgeries").permitAll()
+                    .antMatchers("/login").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                .formLogin()
+                .httpBasic();
+
+                /*.formLogin()
                     //.loginPage("/login")
                     .permitAll()
                     .and()
                 .logout()
                     .logoutSuccessUrl("/login?logout")
-                    .permitAll();
+                    .permitAll()*/;
     }
 }
