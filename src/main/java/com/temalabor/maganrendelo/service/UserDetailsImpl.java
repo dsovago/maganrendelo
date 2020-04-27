@@ -1,6 +1,8 @@
 package com.temalabor.maganrendelo.service;
 /*
+
 import com.temalabor.maganrendelo.model.LoginData;
+import com.temalabor.maganrendelo.model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 public class UserDetailsImpl implements UserDetails {
 
@@ -20,8 +23,11 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        Collection<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        Set<Role> roles = user.getRoles();
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+        }
         return authorities;
     }
 
@@ -55,4 +61,5 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-}*/
+}
+*/

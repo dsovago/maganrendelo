@@ -9,20 +9,20 @@ import java.util.Set;
 public class LoginData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private long id;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "password")
     private String pass;
 
     private String role;
 
-    public LoginData(String email, String pass, String role) {
+    public LoginData(String email, String pass) {
         this.email = email;
         this.pass = pass;
-        this.role = role;
     }
 
     public LoginData() {

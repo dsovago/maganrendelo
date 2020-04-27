@@ -1,7 +1,6 @@
 package com.temalabor.maganrendelo.controller;
 
 import com.temalabor.maganrendelo.model.Patient;
-import com.temalabor.maganrendelo.model.PatientDto;
 import com.temalabor.maganrendelo.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,6 @@ public class PatientController {
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
-    }
-
-    //regisztracios adatok kuldese
-    @PostMapping("/registration")
-    public void regPatient(@RequestBody PatientDto patientdto) {
-        patientService.newPatient(patientdto);
     }
 
     //paciens lekerdezese id szerint

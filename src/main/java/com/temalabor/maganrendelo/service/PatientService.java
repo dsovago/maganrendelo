@@ -15,33 +15,16 @@ import java.util.List;
 @Service
 public class PatientService {
 
-    PatientRepository patientRepository;
-    AppointmentService appointmentService;
-    LoginDataRepository loginDataRepository;
+    private PatientRepository patientRepository;
+    private AppointmentService appointmentService;
+
 
     @Autowired
-    public void setPatientRepository(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, AppointmentService appointmentService) {
         this.patientRepository = patientRepository;
-    }
-
-    @Autowired
-    public void setAppointmentService(AppointmentService appointmentService) {
         this.appointmentService = appointmentService;
     }
 
-    @Autowired
-    public void setLoginDataRepository(LoginDataRepository loginDataRepository) {
-        this.loginDataRepository = loginDataRepository;
-    }
-
-
-    public void newPatient(PatientDto dto) {
-        Patient patient = new Patient(dto.getFirstname(),dto.getLastname(),dto.getEmail(),dto.getTel(),dto.getTaj());
-        LoginData loginData = new LoginData(dto.getEmail(),dto.getPass(),"PATIENT");
-        patientRepository.save(patient);
-        loginDataRepository.save(loginData);
-
-    }
 
     public void updatePatient(Patient patient) {
         patientRepository.save(patient);
@@ -50,6 +33,8 @@ public class PatientService {
     public List<Patient> getPatients() { return patientRepository.findAll(); }
 
     public Patient getPatientById(long id) { return patientRepository.findById(id); }
+
+    public Patient getPatientByEmail(String email) {return patientRepository.findByEmail(email); }
 
     public Patient getPatientByTaj(String taj) { return patientRepository.findByTaj(taj); }
 

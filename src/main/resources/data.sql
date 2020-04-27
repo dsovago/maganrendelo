@@ -37,5 +37,23 @@ insert into appointment (patient_id, doctor_id, date)
   values (2,1,'2020-04-20 09:45:00');
 
 
-insert into users (email, pass, role)
-  values ('admin@magan.hu','abc123','ADMIN');
+insert into users (email, password, role)
+  values ('admin@magan.hu','abc123', 'ADMIN');
+
+insert into users (email, password, role)
+  values ('belakis@example.com', 'bela123', 'PATIENT');
+
+insert into users (email, password, role)
+  values ('ernobig@example.com', 'erno123', 'PATIENT');
+
+insert into users (email, password, role)
+  values ('hunatti@example.com', 'ati123', 'PATIENT');
+
+insert into users (email, password, role)
+  values ('bartag@magan.hu', 'drbarta', 'DOCTOR');
+
+insert into users (email, password, role)
+  values ('kovacsj@magan.hu', 'drkovacs', 'DOCTOR');
+
+insert into users (email, password, role)
+  values ('konyvesk@magan.hu', 'drkonyves', 'DOCTOR');
