@@ -36,6 +36,9 @@ public class SurgeryController {
         this.appointmentService = appointmentService;
     }
 
+    @GetMapping("/surgeries")
+    public List<Surgery> getAllSurgery() { return surgeryService.getSurgeries(); }
+
     @GetMapping("/surgery/{id}")
     public Surgery findSurgery(@PathVariable String id) {
         return surgeryService.getSurgeryById(Long.parseLong(id));
