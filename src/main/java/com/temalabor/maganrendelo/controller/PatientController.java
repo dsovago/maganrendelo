@@ -32,4 +32,7 @@ public class PatientController {
     public void saveEditedPatient(@RequestBody Patient editedPatient) {
         patientService.updatePatient(editedPatient);
     }
+
+    @DeleteMapping("/patient/{id}")
+    public void deletePatient(@PathVariable String id) { patientService.deletePatientById(Long.parseLong(id)); }
 }
