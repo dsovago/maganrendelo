@@ -1,5 +1,6 @@
 package com.temalabor.maganrendelo.config;
 
+/*
 import com.temalabor.maganrendelo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -47,12 +48,15 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
                     .and()
                 .httpBasic();
 
-                /*.formLogin()
+                */
+/*.formLogin()
                     //.loginPage("/login")
                     .permitAll()
                     .and()
                 .logout()
                     .logoutSuccessUrl("/login?logout")
-                    .permitAll()*/;
+                    .permitAll()*//*
+;
     }
 }
+*/

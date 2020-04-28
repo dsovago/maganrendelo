@@ -7,21 +7,21 @@ import com.temalabor.maganrendelo.repository.DoctorRepository;
 import com.temalabor.maganrendelo.repository.LoginDataRepository;
 import com.temalabor.maganrendelo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+/*import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl /*implements UserService, UserDetailsService*/ {
 
     private LoginDataRepository userRepository;
     private PatientRepository patientRepository;
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
     }
-
+/*
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LoginData user = findByEmail(username);
@@ -61,15 +61,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return authorities;
     }
 
-    public void registerUser(PatientDto dto) {
-        Patient patient = new Patient(dto.getFirstname(),dto.getLastname(),dto.getEmail(),dto.getTel(),dto.getTaj());
-        LoginData user = new LoginData(dto.getEmail(),dto.getPass());
 
-        user.setRole(PATIENT_ROLE);
-
-        userRepository.save(user);
-        patientRepository.save(patient);
-    }
 
     public String encodePassword(String pass) {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -93,5 +85,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             default:
                 return "/error";
         }
+    }*/
+
+
+    public void registerUser(PatientDto dto) {
+        Patient patient = new Patient(dto.getFirstname(),dto.getLastname(),dto.getEmail(),dto.getTel(),dto.getTaj());
+        LoginData user = new LoginData(dto.getEmail(),dto.getPass());
+
+        user.setRole(PATIENT_ROLE);
+
+        userRepository.save(user);
+        patientRepository.save(patient);
     }
 }

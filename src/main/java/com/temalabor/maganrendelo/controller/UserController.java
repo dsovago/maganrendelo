@@ -11,7 +11,7 @@ import java.security.Principal;
 import java.util.Base64;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @RequestMapping("/login")
