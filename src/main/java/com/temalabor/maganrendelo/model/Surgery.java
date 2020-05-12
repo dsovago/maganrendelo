@@ -16,13 +16,13 @@ public class Surgery {
     private String tel;
     private String info;
     private String map;
-    @OneToMany(mappedBy = "surgery")
-    private List<Doctor> doctors;
-    @OneToMany(mappedBy = "surgery")
-    private List<Comment> comments;
+//    @OneToMany(mappedBy = "surgery")
+//    private List<Doctor> doctors;
+//    @OneToMany(mappedBy = "surgery")
+//    private List<Comment> comments;
 
 
-    public Surgery(String name, String address, String opening, String email, String tel, String info, String map, List<Doctor> doctors) {
+    public Surgery(String name, String address, String opening, String email, String tel, String info, String map) {
         this.name = name;
         this.address = address;
         this.opening = opening;
@@ -30,10 +30,9 @@ public class Surgery {
         this.tel = tel;
         this.info = info;
         this.map = map;
-        this.doctors = doctors;
     }
 
-    public Surgery(long id, String name, String address, String opening, String email, String tel, String info, String map, List<Doctor> doctors) {
+    public Surgery(long id, String name, String address, String opening, String email, String tel, String info, String map) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -42,7 +41,6 @@ public class Surgery {
         this.tel = tel;
         this.info = info;
         this.map = map;
-        this.doctors = doctors;
     }
 
     public Surgery() {
@@ -112,11 +110,4 @@ public class Surgery {
         this.map = map;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
 }
