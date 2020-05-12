@@ -47,7 +47,9 @@ public class SurgeryController {
     }
 
     @PostMapping("/surgery/{id}/comments")
-    public void newCommentOnSurgery(@RequestBody Comment comment) {
+    public void newCommentOnSurgery(@PathVariable String id, @RequestBody Comment comment) {
+        Surgery surgery = surgeryService.getSurgeryById(Long.parseLong(id));
+        comment.setSurgery(surgery);
         commentService.newComment(comment);
     }
 
