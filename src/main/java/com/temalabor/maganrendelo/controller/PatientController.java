@@ -19,8 +19,8 @@ public class PatientController {
 
     //regisztracios adatok kuldese
     @PostMapping("/registration")
-    public void regPatient(@RequestBody PatientDto patientdto) {
-        patientService.newPatient(patientdto);
+    public void regPatient(@RequestBody Patient patient) {
+        patientService.newPatient(patient);
     }
 
     //paciens lekerdezese id szerint

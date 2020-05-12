@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,20 +15,16 @@ public abstract class User {
     protected String lastname;
     protected String email;
     protected String tel;
+    protected String password;
+    protected String role;
 
-    public User(String firstname, String lastname, String email, String tel) {
+    public User(String firstname, String lastname, String email, String tel, String password, String role) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.tel = tel;
-    }
-
-    public User(long id, String firstname, String lastname, String email, String tel) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.tel = tel;
+        this.password = password;
+        this.role = role;
     }
 
     public User() {
@@ -72,5 +68,21 @@ public abstract class User {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -18,6 +18,9 @@ public class Surgery {
     private String map;
     @OneToMany(mappedBy = "surgery")
     private List<Doctor> doctors;
+    @OneToMany(mappedBy = "surgery")
+    private List<Comment> comments;
+
 
     public Surgery(String name, String address, String opening, String email, String tel, String info, String map, List<Doctor> doctors) {
         this.name = name;

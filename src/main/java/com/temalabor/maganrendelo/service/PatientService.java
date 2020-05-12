@@ -1,10 +1,7 @@
 package com.temalabor.maganrendelo.service;
 
 import com.temalabor.maganrendelo.model.Appointment;
-import com.temalabor.maganrendelo.model.LoginData;
 import com.temalabor.maganrendelo.model.Patient;
-import com.temalabor.maganrendelo.model.PatientDto;
-import com.temalabor.maganrendelo.repository.LoginDataRepository;
 import com.temalabor.maganrendelo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +14,6 @@ public class PatientService {
 
     PatientRepository patientRepository;
     AppointmentService appointmentService;
-    LoginDataRepository loginDataRepository;
 
     @Autowired
     public void setPatientRepository(PatientRepository patientRepository) {
@@ -29,17 +25,9 @@ public class PatientService {
         this.appointmentService = appointmentService;
     }
 
-    @Autowired
-    public void setLoginDataRepository(LoginDataRepository loginDataRepository) {
-        this.loginDataRepository = loginDataRepository;
-    }
 
-
-    public void newPatient(PatientDto dto) {
-        Patient patient = new Patient(dto.getFirstname(),dto.getLastname(),dto.getEmail(),dto.getTel(),dto.getTaj());
-        LoginData loginData = new LoginData(dto.getEmail(),dto.getPass(),"PATIENT");
+    public void newPatient(Patient patient) {
         patientRepository.save(patient);
-        loginDataRepository.save(loginData);
 
     }
 

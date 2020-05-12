@@ -7,13 +7,8 @@ public class Patient extends User{
 
     private String taj;
 
-    public Patient(String firstname, String lastname, String email, String tel, String taj) {
-        super(firstname, lastname, email, tel);
-        this.taj = taj;
-    }
-
-    public Patient(long id, String firstname, String lastname, String email, String tel, String taj) {
-        super(id, firstname, lastname, email, tel);
+    public Patient(String firstname, String lastname, String email, String tel, String password, String role, String taj) {
+        super(firstname, lastname, email, tel, password, role);
         this.taj = taj;
     }
 

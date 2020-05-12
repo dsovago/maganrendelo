@@ -1,11 +1,9 @@
 package com.temalabor.maganrendelo.controller;
 
-import com.temalabor.maganrendelo.model.Appointment;
-import com.temalabor.maganrendelo.model.Doctor;
-import com.temalabor.maganrendelo.model.Patient;
-import com.temalabor.maganrendelo.model.Surgery;
+import com.temalabor.maganrendelo.model.*;
 import com.temalabor.maganrendelo.repository.SurgeryRepository;
 import com.temalabor.maganrendelo.service.AppointmentService;
+import com.temalabor.maganrendelo.service.CommentService;
 import com.temalabor.maganrendelo.service.DoctorService;
 import com.temalabor.maganrendelo.service.SurgeryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +15,14 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class SurgeryController {
 
+    @Autowired
     SurgeryService surgeryService;
+    @Autowired
     DoctorService doctorService;
+    @Autowired
     AppointmentService appointmentService;
-
     @Autowired
-    public void setSurgeryService(SurgeryService surgeryService) {
-        this.surgeryService = surgeryService;
-    }
-
-    @Autowired
-    public void setDoctorService(DoctorService doctorService) {
-        this.doctorService = doctorService;
-    }
-
-    @Autowired
-    public void setAppointmentService(AppointmentService appointmentService) {
-        this.appointmentService = appointmentService;
-    }
+    CommentService commentService;
 
     @GetMapping("/surgery/{id}")
     public Surgery findSurgery(@PathVariable String id) {
@@ -43,12 +31,24 @@ public class SurgeryController {
 
     @GetMapping("/surgery/{id}/doctors")
     public List<Doctor> getDoctorsBySurgery(@PathVariable String id) {
-        return  doctorService.getDoctorsBySurgery(Long.parseLong(id));
+        Surgery surgery = surgeryService.getSurgeryById(Long.parseLong(id));
+        return  doctorService.getDoctorsBySurgery(surgery);
     }
 
     @GetMapping("/surgery/{id}/appointment")
     public List<Doctor> getDoctorsForAppoinment(@PathVariable String id) {
-        return  doctorService.getDoctorsBySurgery(Long.parseLong(id));
+        Surgery surgery = surgeryService.getSurgeryById(Long.parseLong(id));
+        return  doctorService.getDoctorsBySurgery(surgery);
+    }
+
+    @GetMapping("/surgery/{id}/comments")
+    public List<Comment> getCommentsBySurgery(@PathVariable String id) {
+        return commentService.getCommentsBySurgeryId(Long.parseLong(id));
+    }
+
+    @PostMapping("/surgery/{id}/comments")
+    public void newCommentOnSurgery(@RequestBody Comment comment) {
+        commentService.newComment(comment);
     }
 
     /*@PostMapping("/surgery/{id}/appointment")

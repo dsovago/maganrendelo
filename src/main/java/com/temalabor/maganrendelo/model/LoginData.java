@@ -4,36 +4,17 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
 public class LoginData {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
-    @Column(unique = true, nullable = false)
     private String email;
+    private String password;
 
-    @Column(nullable = false)
-    private String pass;
-
-    private String role;
-
-    public LoginData(String email, String pass, String role) {
+    public LoginData(String email, String password) {
         this.email = email;
-        this.pass = pass;
-        this.role = role;
+        this.password = password;
     }
 
     public LoginData() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -44,19 +25,11 @@ public class LoginData {
         this.email = email;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

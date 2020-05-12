@@ -13,11 +13,5 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     Patient findByTaj(String taj);
 
-    /*@Query(value = "update patient p set p.firstname= :firstname, p.lastname= :lastname, p.email= :email, p.tel= :tel, p.taj= :taj where p.id= :id")
-    void update(@Param("id") Long id,
-                @Param("firstname") String firstname,
-                @Param("lastname") String lastname,
-                @Param("email") String email,
-                @Param("tel") String tel,
-                @Param("taj") String taj);*/
+    Patient findByEmail(String email);
 }
